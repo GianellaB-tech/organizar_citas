@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestras Citas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Nuestro Organizador de Citas</h1>
+        <!-- Menú de navegación -->
+        <nav>
+            <button onclick="mostrarSeccion('sec-calendario')" class="btn-nav">📅 Calendario</button>
+            <button onclick="mostrarSeccion('sec-comidas')" class="btn-nav">🍕 Banco de Comidas</button>
+            <button onclick="mostrarSeccion('sec-peliculas')" class="btn-nav">🎬 Banco de Películas</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <!-- PESTAÑA: CALENDARIO -->
+        <section id="sec-calendario" class="seccion">
+            <div class="card form-cita-container">
+                <h2>Agendar Nueva Cita</h2>
+                <form id="form-cita">
+                    <!-- Agrupamos fecha y hora para que se vean bien juntos -->
+                    <div style="display: flex; gap: 10px; width: 100%;">
+                        <input type="date" id="fecha-cita" style="flex: 1;" required>
+                        <input type="time" id="hora-cita" style="flex: 1;" required>
+                    </div>
+                    <input type="text" id="titulo-cita" placeholder="Ej: Noche de terror" required>
+                    
+                    <select id="select-comida-cita">
+                        <option value="">-- Sin Comida --</option>
+                    </select>
+                    <select id="select-pelicula-cita">
+                        <option value="">-- Sin Película --</option>
+                    </select>
+
+                    <button type="submit">Agendar Cita</button>
+                </form>
+            </div>
+            <!-- Aquí se dibujará el calendario completo -->
+            <div class="card">
+                <div id="calendario-full"></div>
+            </div>
+        </section>
+
+        <!-- PESTAÑA: COMIDAS (Oculta por defecto) -->
+        <section id="sec-comidas" class="seccion oculto card">
+            <h2>🍕 Banco de Comidas</h2>
+            <form id="form-comida">
+                <input type="text" id="nombre-comida" placeholder="Nombre (Ej: Tacos)" required>
+                <select id="tipo-comida">
+                    <option value="Delivery">Delivery</option>
+                    <option value="Casero">Cocinar en casa</option>
+                    <option value="Restaurante">Salir a comer</option>
+                </select>
+                <button type="submit">Agregar Comida</button>
+            </form>
+            <ul id="lista-comidas" class="lista"></ul>
+        </section>
+
+        <!-- PESTAÑA: PELÍCULAS (Oculta por defecto) -->
+        <section id="sec-peliculas" class="seccion oculto card">
+            <h2>🎬 Banco de Películas</h2>
+            <form id="form-pelicula">
+                <input type="text" id="titulo-pelicula" placeholder="Título de la película" required>
+                <select id="plataforma-pelicula">
+                    <option value="Netflix">Netflix</option>
+                    <option value="Max">Max</option>
+                    <option value="Cine">Cine</option>
+                    <option value="Prime">Prime Video</option>
+                </select>
+                <button type="submit">Agregar Película</button>
+            </form>
+            <ul id="lista-peliculas" class="lista"></ul>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

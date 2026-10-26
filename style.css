@@ -1,0 +1,225 @@
+/* Tipografía moderna, geométrica y limpia, idéntica a la referencia */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Paleta de colores extraída directamente de la imagen */
+    --bg-cream: #f4efdf;       /* Fondo crema principal */
+    --dark-solid: #1c1c1e;     /* Gris casi negro para textos y botones principales */
+    --pastel-pink: #f5b6d5;    /* Rosa pastel para tarjetas destacadas */
+    --pastel-green: #9fba83;   /* Verde pastel (Agronomía) */
+    --pastel-blue: #b3cdef;    /* Azul pastel (Sistemas) */
+    --pastel-yellow: #f8df6f;  /* Amarillo pastel para detalles */
+    --card-bg: #ffffff;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-cream);
+    color: var(--dark-solid);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    /* Fondo de campo de trigo al atardecer con un filtro crema encima */
+    background-image: linear-gradient(rgba(244, 239, 223, 0.82), rgba(244, 239, 223, 0.82)), 
+                      url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    /* Cursor de Pizza restaurado */
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='font-size:24px'><text y='22'>🍕</text></svg>"), auto;
+    
+    overflow-x: hidden;
+}
+
+/* Encabezado minimalista */
+header {
+    text-align: center;
+    padding: 3rem 1rem 1rem;
+    background-color: transparent;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--dark-solid);
+    letter-spacing: -0.5px;
+}
+
+header h1::before { content: "🌱 "; } /* Agronomía */
+header h1::after { content: " 💻"; } /* Sistemas */
+
+/* Navegación estilo Soft UI (iconos circulares / botones píldora) */
+nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-nav {
+    background-color: var(--card-bg);
+    color: var(--dark-solid);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px; /* Bordes de píldora */
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: all 0.2s ease;
+}
+
+.btn-nav:hover {
+    background-color: var(--pastel-yellow);
+    transform: translateY(-2px);
+}
+
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Tarjetas inspiradas en el bloque rosa de la imagen */
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 28px; /* Curvas muy pronunciadas */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    margin-bottom: 25px;
+}
+
+/* Hacemos que la tarjeta de citas sea rosa pastel como en la referencia */
+#sec-calendario .card:first-child {
+    background-color: var(--pastel-pink);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--dark-solid);
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-cita-container form {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+/* Inputs limpios, redondeados y sin bordes marcados */
+input, select {
+    padding: 14px 20px;
+    border-radius: 20px;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: var(--dark-solid);
+    outline: none;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);
+}
+
+input:focus, select:focus {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px var(--pastel-blue);
+}
+
+/* Botones principales oscuros como el de la referencia ("Plan check-up") */
+button[type="submit"] {
+    background-color: var(--dark-solid);
+    color: white;
+    border: none;
+    border-radius: 30px; /* Totalmente redondeado */
+    padding: 14px 28px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+button[type="submit"]:active {
+    transform: scale(0.96);
+}
+
+button[type="submit"]:hover {
+    opacity: 0.9;
+}
+
+/* Listas (Banco de comidas y películas) */
+.lista { 
+    list-style: none; 
+    padding: 0; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lista li {
+    background: var(--bg-cream);
+    padding: 16px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    color: var(--dark-solid);
+    border-left: 6px solid;
+}
+
+/* Colores alternados para las listas según la temática */
+#sec-comidas .lista li { border-left-color: var(--pastel-green); } /* Agronomía */
+#sec-peliculas .lista li { border-left-color: var(--pastel-blue); } /* Sistemas */
+
+.oculto { display: none; }
+
+/* Ajuste minimalista del calendario */
+#calendario-full {
+    min-height: 500px;
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 20px;
+}
+
+/* Limpiando los estilos internos de FullCalendar para que combinen */
+.fc-toolbar-title {
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 700 !important;
+    color: var(--dark-solid) !important;
+    font-size: 1.5rem !important;
+}
+
+.fc-button-primary {
+    background-color: var(--bg-cream) !important;
+    color: var(--dark-solid) !important;
+    border: none !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 600 !important;
+    border-radius: 20px !important;
+    text-transform: capitalize;
+    box-shadow: none !important;
+}
+
+.fc-button-primary:hover, .fc-button-primary:active {
+    background-color: var(--pastel-yellow) !important;
+    color: var(--dark-solid) !important;
+}
+
+.fc-daygrid-day-number {
+    color: var(--dark-solid);
+    font-weight: 500;
+}
